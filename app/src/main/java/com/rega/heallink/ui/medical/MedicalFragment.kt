@@ -1,4 +1,4 @@
-package com.rega.heallink.ui.notifications
+package com.rega.heallink.ui.medical
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.rega.heallink.databinding.FragmentNotificationsBinding
+import com.rega.heallink.databinding.FragmentMedicalBinding
 
-class NotificationsFragment : Fragment() {
+class MedicalFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+    private var _binding: FragmentMedicalBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,14 +22,14 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+        val medicalViewModel =
+            ViewModelProvider(this).get(MedicalViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentMedicalBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
+        val textView: TextView = binding.textHome
+        medicalViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root
